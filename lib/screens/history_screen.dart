@@ -15,7 +15,10 @@ class HistoryScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           "Game History",
-          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+          style: TextStyle(
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         centerTitle: true,
         backgroundColor: Colors.blue,

@@ -14,9 +14,25 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
       appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const HistoryScreen(),
+                ),
+              );
+            },
+            icon: Icon(Icons.history),
+          ),
+        ],
         title: const Text(
           "Tic Tac Toe",
-          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+          style: TextStyle(
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         centerTitle: true,
         backgroundColor: Colors.blue,
@@ -25,12 +41,8 @@ class HomeScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         child: Column(
           children: [
-            // Top player box
             _playerBox("Player 1 (X)", game.currentPlayer == 'X'),
-    
             const SizedBox(height: 12),
-    
-            // Middle area (board, status, buttons) - make this expand and scroll if needed
             Expanded(
               child: SingleChildScrollView(
                 child: Column(
@@ -66,18 +78,14 @@ class HomeScreen extends StatelessWidget {
                         ],
                       ),
                     const SizedBox(height: 18),
-                    // Board
                     const TicTacToeBoard(),
                     const SizedBox(height: 18),
-    
-                    // Restart / Play again and History buttons
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         ElevatedButton.icon(
                           onPressed: game.resetGame,
-                          icon:
-                              const Icon(Icons.refresh, color: Colors.white),
+                          icon: const Icon(Icons.refresh, color: Colors.white),
                           label: const Text(
                             "Restart",
                             style: TextStyle(
@@ -105,8 +113,8 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               );
                             },
-                            icon: const Icon(Icons.history,
-                                color: Colors.white),
+                            icon:
+                                const Icon(Icons.history, color: Colors.white),
                             label: const Text(
                               "See History",
                               style: TextStyle(
@@ -130,8 +138,6 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-    
-            // Bottom player box
             _playerBox("Player 2 (O)", game.currentPlayer == 'O'),
             SizedBox(height: MediaQuery.of(context).padding.bottom + 8)
           ],
@@ -152,6 +158,16 @@ class HomeScreen extends StatelessWidget {
           color: isActive ? Colors.blue : Colors.grey.shade400,
           width: 1.8,
         ),
+        boxShadow: isActive
+            ? [
+                BoxShadow(
+                  color: Colors.blue.withOpacity(0.2),
+                  blurRadius: 10,
+                  spreadRadius: 5,
+                  offset: const Offset(0, 4),
+                ),
+              ]
+            : [],
       ),
       child: Center(
         child: Text(

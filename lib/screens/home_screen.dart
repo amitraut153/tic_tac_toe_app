@@ -139,7 +139,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             _playerBox("Player 2 (O)", game.currentPlayer == 'O'),
-            SizedBox(height: MediaQuery.of(context).padding.bottom + 8)
+            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
           ],
         ),
       ),
